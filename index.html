@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
+    <title>Embedding Dataset -- NLP Center, Tencent AI Lab</title>
+    <style type="text/css">
+        table th
+        {
+            white-space: nowrap;
+        }
+        table td
+        {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body style="margin-left: 12%; margin-right: 12%;">
+    <div>
+        <div>
+            <h1>Tencent AI Lab Embedding Corpus for Chinese Words and Phrases</h1>
+        </div>
+        <div>
+            <hr>
+            <div>
+                <p>A corpus on continuous distributed representations of Chinese words and phrases.</p>
+                <h1>Introduction</h1>
+                <p>This corpus provides 200-dimension vector representations, a.k.a. embeddings, for over 8 million Chinese words and phrases, which are pre-trained on large-scale high-quality data. These vectors, capturing semantic meanings for Chinese words and phrases, can be widely applied in many downstream Chinese processing tasks (e.g., named entity recognition and text classification) and in further research.</p>
+
+                <h1>Data Description</h1>
+                <p>Download the corpus from: <a href="data/Tencent_AILab_ChineseEmbedding.tar.gz">Tencent_AILab_ChineseEmbedding.tar.gz</a>.</p>
+                <p>The pre-trained embeddings are in <I><b>Tencent_AILab_ChineseEmbedding.txt</b></I>. The first line shows the total number of embeddings and their dimension size, separated by a space. In each line below, the first column indicates a Chinese word or phrase, followed by a space and its embedding. For each embedding,  its values in different dimensions are separated by spaces.</p>
+
+                <h1>Highlights</h1>
+                <p>In comparison with existing embedding corpora for Chinese, the superiority of our corpus mainly lies in <I>coverage</I>, <I>freshness</I>, and <I>accuracy</I>.</p>
+                <ul>
+                    <li>
+                        <I>Coverage</I>. Our corpus contains a large amount of domain-specific words or slangs in vocabulary, such as “喀拉喀什河”, “皇帝菜”, “不念僧面念佛面”, “冰火两重天”, “煮酒论英雄", which are not covered by most of the existing embedding corpora.
+                    </li>
+                    <li>
+                        <I>Freshness</I>. Our corpus contains fresh words appearing or getting popular recently, such as “恋与制作人”, “三生三世十里桃花”, “打call”, “十动然拒”, “因吹斯汀”, etc.
+                    </li>
+                    <li>
+                        <I>Accuracy</I>. Our embeddings can better reflect the semantic meaning of Chinese words or phrases, attributed to the large-scale data and the well-designed algorithm for training.
+                    </li>
+                </ul>
+
+                <h1>Training</h1>
+                <p>To ensure the <I>coverage</I>, <I>freshness</I>, and <I>accuracy</I> of our corpus, we carefully design our data preparation and training process in terms of the following aspects:</p>
+                <ul>
+                    <li>
+                        <I>Data collection</I>. Our training data contains large-scale text collected from news, webpages, and novels. Text data from diverse domains enables the coverage of various types of words and phrases. Moreover, the recently collected webpages and news data enable us to learn the semantic representations of fresh words.
+                    </li>
+                    <li>
+                        <I>Vocabulary building</I>. To enrich our vocabulary, we involve phrases in <a href="https://www.wikipedia.org/">Wikipedia</a> and <a href="https://baike.baidu.com/">Baidu Baike</a>. We also apply the phrase discovery approach in <a href="http://aclweb.org/anthology/C/C10/C10-1112.pdf">Corpus-based Semantic Class Mining: Distributional vs. Pattern-Based Approaches</a>, which enhances the coverage of emerging phrases.
+                    </li>
+                    <li>
+                        <I>Training algorithm</I>. Our corpus is trained with <a href="http://aclweb.org/anthology/N18-2028">Directional Skip-Gram: Explicitly Distinguishing Left and Right Context for Word Embeddings</a>, which is based on word co-occurrence and the directions of word pairs, i.e., which word is on the left, in a context window.
+                    </li>
+                </ul>
+
+                <h1>Simple Cases</h1>
+                <p>To exemplify the learned representations, in below we show the most similar words for some sample words. Here cosine distance between embeddings is used to compute the distance of two words/phrases. </p>
+                <div style="overflow: auto; width: 100%;">
+                    <table border="1" cellpadding="4" cellspacing="0" style="width: 70%;margin:auto; overflow: auto;">
+                        <tr>
+                            <td width="12%"><h3>Input</h3></td>
+                            <td width="22%"><code>喀拉喀什河</code></td>
+                            <td width="22%"><code>因吹斯汀</code></td>
+                            <td width="22%"><code>刘德华</code></td>
+                            <td width="22%"><code>自然语言处理</code></td>
+                        </tr>
+                        <tr valign="top" style="text-align: left;">
+                            <td style="text-align: left; vertical-align: middle;">
+                                <h3>Top</br>
+                                    similar</br>
+                                    words</h3>
+                            </td>
+                            <td>
+                                <code>
+                                墨玉河</br>
+                                和田河</br>
+                                玉龙喀什河</br>
+                                白玉河</br>
+                                喀什河</br>
+                                叶尔羌河</br>
+                                克里雅河</br>
+                                玛纳斯河</br>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                一颗赛艇</br>
+                                因吹斯听</br>
+                                城会玩</br>
+                                厉害了word哥</br>
+                                emmmmm</br>
+                                扎心了老铁</br>
+                                神吐槽</br>
+                                可以说是非常爆笑了</br>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                刘天王</br>
+                                周润发</br>
+                                华仔</br>
+                                梁朝伟</br>
+                                张学友</br>
+                                古天乐</br>
+                                张家辉</br>
+                                张国荣</br>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                自然语言理解</br>
+                                计算机视觉</br>
+                                自然语言处理技术</br>
+                                深度学习</br>
+                                机器学习</br>
+                                图像识别</br>
+                                语义理解</br>
+                                语音识别</br>
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h1>FAQ</h1>
+                <p><b>Q1: Why we encountered errors when reading Tencent AI Lab embeddings with Google’s word2vec or gensim’s Word2Vec?</b></p>
+                <p>Our data file is encoded in UTF-8. If you are using gensim, you can follow the scripts below to read our embeddings:
+                    <blockquote>
+                        <p><code>from gensim.models.word2vec import KeyedVectors</br>
+                            wv_from_text = KeyedVectors.load_word2vec_format(file, binary=False)</code></p>
+                    </blockquote>
+                </p>
+                <p><b>Q2: How did you segment Chinese words when processing the training data? What should we do to make our segmentation results similar to yours?</b></p>
+                <p>You might not be able to make full use of our embeddings if only applying publicly available toolkits for Chinese word segmentation. The reason is that most of these toolkits will further segment phrases or entities into fine-grained elements. For some specific tasks, fine-grained word segmentation in preprocessing will result in worse model performance than coarse-grained segmentation, while sometimes fine-grained word segmentation may perform better.</p>
+                <p>Currently, we are working to test our word segmentation toolkit on diverse NLP tasks and further improve its performance. Once ready, the toolkit will be released for public use. At the current stage, as a quick start, you can simply use an open-source toolkit for Chinese word segmentation. Furthermore, some words can be combined into phrases based on our vocabulary. In addition, you may consider both fine-grained words (obtained in word segmentation) and coarse-grained phrases (obtained in word combination) when tackling some certain tasks.</p>
+                <p><b>Q3: Why there are stop words (e.g., “的” and “是” ), digits, and punctuations (e.g., “，” and “。”) in the vocabulary of Tencent AI Lab embeddings?</b></p>
+                <p>We did not remove these words to ensure the coverage of our vocabulary and the general applicability of our embeddings in diverse scenarios. Though not useful in many applications, stop words, digits, and punctuations might be informative for some certain tasks, such as named entity recognition and part-of-speech tagging. To better adapt our embeddings to your specific task, you may customize your own vocabulary and ignore the words or phrases absent in your vocabulary.</p>
+                <h1>Final Words</h1>
+                <p>Thanks for using our corpus! Please don't forget to let us know if our embeddings advance the current state of the art forward in your Chinese natural language processing task.</p>
+                <h1>Citation</h1>
+                <p>If you use our corpus, please cite: Yan Song, Shuming Shi, Jing Li, and Haisong Zhang. <a href="http://aclweb.org/anthology/N18-2028">Directional Skip-Gram: Explicitly Distinguishing Left and Right Context for Word Embeddings</a>. NAACL 2018 (Short Paper). [<a href="http://aclweb.org/anthology/N18-2028">pdf</a>] [<a href="https://aclanthology.coli.uni-saarland.de/papers/N18-2028/n18-2028.bib">bib</a>]</p>
+                <!--blockquote>
+                  <p><code>[1]</code> Yan Song, Shuming Shi, Jing Li, and Haisong Zhang. <a href="http://aclweb.org/anthology/N18-2028">Directional Skip-Gram: Explicitly Distinguishing Left and Right Context for Word Embeddings</a>. NAACL 2018 (Short Paper).</p>
+                  <p><code>[2]</code> Shuming Shi, Huibin Zhang, Xiaojie Yuan, and Ji-Rong Wen. <a href="http://aclweb.org/anthology/C/C10/C10-1112.pdf">Corpus-based Semantic Class Mining: Distributional vs. Pattern-Based Approaches</a>. COLING 2010.</p>
+                </blockquote-->
+
+                <h1>Contacts</h1>
+                <p>If you have any question, please contact us: <a href="mailto:nlu@tencent.com">nlu@tencent.com</a></p>
+                <p>You can also visit our lab's official website: <a href="https://ai.tencent.com/ailab">Tencent AI Lab</a></p>
+
+                <h1>Disclaimer</h1>
+                <p>This corpus is for research purpose only and released under a Creative Commons Attribution 3.0 Unported License (<a href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/)</a>.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
