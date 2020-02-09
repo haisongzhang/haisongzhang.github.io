@@ -1,0 +1,61 @@
+body{
+    margin: 1px 1px 1px 1px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+/*PC端*/
+@media (min-width: 1142px)  {
+    #app {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .class_top{
+        top: 0;
+        height: 60px;
+        position: fixed;
+        flex: 0 0 auto;
+        width: 90%;
+    }
+    .class_middle{
+        margin-top: 160px;
+        display: flex;
+        align-items: flex-start;
+        flex: 1 0 auto;
+    }
+    .class_middle_left{
+        flex: 0 0 auto;
+        width: 400px;
+    }
+    .class_middle_right{
+    //flex: 1 1 auto;
+        width: 65%;
+    }
+}
+@media  (max-width: 1141px) {
+    #app {
+        margin: 0 auto;
+    }
+    .class_top{
+        top: 0;
+        height: 60px;
+        position: fixed;
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .class_middle{
+        margin-top: 36px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1 0 auto;
+    }
+    .class_middle_left{
+        flex: 0 0 auto;
+        width: 400px;
+    }
+    .class_middle_right{
+    //flex: 1 1 auto;
+        width: 90%;
+    }
+}
